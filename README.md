@@ -44,6 +44,119 @@ String + String = String
 |`var x; `|`let x;`|
 |`function test(){}`|`const x = function(){}`|
 
+### Function Scope
 
+**var :**
+````
+console.log(x)
+var x = 5
+console.log(x)
+````
+**Hoisting**
 
+````
+var x;
+console.log(x)
+var x = 5
+console.log(x)
+````
 
+**Output :**
+````
+> undefined
+> 5
+````
+
+**Function**
+````
+sayHello()
+
+function sayHello(){
+	console.log("Hello")
+}
+````
+**Hoisting**
+````
+function sayHello(){
+	console.log("Hello")
+}
+
+sayHello()
+````
+
+**Output :**
+````
+> "Hello"
+````
+### Block Scope
+
+**let :**
+````
+{
+	let hello = "Hello";
+}
+
+console.log(hello)
+````
+**Output :**
+````
+Error: hello is not defined
+````
+or
+
+````
+console.log(hello)
+let hello = "Hello";
+
+````
+**Output :**
+````
+Error: Cannot access 'hello' before initialization
+````
+
+**const :**
+````
+sayHello()
+
+const sayHello = function(){
+	console.log("Hello")
+}
+````
+**Output :** 
+````
+Error: Cannot access 'sayHello' before initialization
+````
+
+## Undef vs Undec
+
+````
+var x;
+console.log(x) // undefined
+
+console.log(y) // undefined(undeclared)
+````
+
+## Closure
+
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+Fonksiyon değişkenlerinin fonksiyon bittikten sonra da erişebilir olması.
+
+````
+function number(n){
+	console.log("begin")
+  	setTimeout(function(){
+    	console.log(n)
+    },100)
+  	console.log("end")
+}
+
+number(55)
+````
+
+**Output :**
+````
+> "begin"
+> "end"
+> 55
+````
