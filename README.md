@@ -138,9 +138,10 @@ console.log(y) // undefined(undeclared)
 
 ## Closure
 
-A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+A closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
 
 Fonksiyon değişkenlerinin fonksiyon bittikten sonra da erişebilir olması.
+
 
 ````
 function number(n){
@@ -159,4 +160,21 @@ number(55)
 > "begin"
 > "end"
 > 55
+````
+Function
+````
+function ask(fname){
+	return function(lname){
+    	console.log(fname, lname)
+    }
+}
+
+const name = ask("Jane")
+
+name("Doe")
+````
+
+**Output :**
+````
+> "Jane" "Doe"
 ````
