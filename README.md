@@ -224,6 +224,8 @@ document.getElementById("submit").addEventListener("click", function(event){
 
 ### b-) Bubble, Capture Phase , Stop Propagation
 
+https://codepen.io/yeged/pen/BaRLOWj
+
 **HTML :**
 ````
 <div id="grandparent" style="background-color: yellow; height: 450px; width: 450px;">
@@ -374,3 +376,180 @@ It does not, however, prevent any default behaviors from occurring; for instance
 Prevent Default bir web elemanının default davranışını değiştirir. Browser'ın varsayılan davranışını engeller.
 
 Stop Propagation Event flowun devam etmesini engeller.
+
+### c-) Async Operations
+
+**HTML :**
+
+````
+<div>
+  <button id="js-test">Test</button>
+</div>
+````
+
+### XHR - Old Way Request
+
+Closure sayesinde veri alındı ve asenkron bir işlem yapılmış oldu. Callback Yöntemi.
+
+
+**Javascript :**
+````
+let button = document.getElementById("js-test")
+
+button.addEventListener("click", () => {
+  console.log("clicked!")
+  function reqListener(event){
+    const userInfo = JSON.parse(this.responseText) // Object
+    console.log("User info :", userInfo.title)  
+}
+  var oReq = new XMLHttpRequest()
+  oReq.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+  oReq.addEventListener("load", reqListener)
+  oReq.addEventListener("error", () => {
+    console.log("sorry, error")
+  })
+  
+  oReq.send()
+  console.log("clicked end!")
+});
+````
+
+**Output :**
+````
+>"clicked!"
+>"clicked end!"
+>"User info :" "delectus aut autem"
+````
+
+### Promise
+
+Promisler birer objectdir. Pending -> Fullfill or Reject -> then -> return. 
+
+**Fetch**
+
+Fetch promise döndürür. Fetchden gelen bir promise result(Promise) döndürür.(Fullfill olduğunda response) Result json metodu döndürür ve başka bir promise döner. Zincirleme(Chain)
+
+**Javascript :**
+````
+let button = document.getElementById("js-test")
+
+button.addEventListener("click", () => {
+  console.log("clicked!")
+  fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then(response => response.json())
+    .then(json => console.log(json.title))
+  console.log("clicked end!")
+});
+
+````
+**Output :**
+````
+>"clicked!"
+>"clicked end!"
+>"User info :" "delectus aut autem"
+````
+
+**Vanilla Promise**
+
+````
+Resolve : then
+Reject : catch
+````
+**Javascript :**
+````
+let button = document.getElementById("js-test")
+
+const getUserFromStore = () => {
+  const user = {title: "John"}
+  // Reject("Noo")
+  // return;
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(user)
+    }, 100)
+  })
+}
+
+button.addEventListener("click", () => {
+  console.log("clicked!")
+  getUserFromStore()
+  .then((info) =>{            //Promise is fullfilled
+    console.log(info.title)
+  }).catch(() =>{
+    console.log("some error")
+  })
+  console.log("clicked end!")
+});
+````
+
+**Output :**
+````
+>"clicked!"
+>"clicked end!"
+>"John"
+````
+
+**Async and Await**
+
+Async keywordü herhangi bir fonksiyonu promise hale dönüştürmek için kullanılır. Promisler async operationslardır, asenkron çalışırlar. 
+
+Await sırayla çalışır ve çalışana kadar bekletir. Bir sürü data çekerken loading işlemi gerçekleştirmek için kullanılabilir.
+
+Async ise bir şeyleri asenksron yapar. Await bir şeyleri bekletir. Await bir üstteki satırı bekler. 
+
+**Javascript :**
+````
+let button = document.getElementById("js-test")
+
+const getUserFromStore = () => {
+  const user = {title: "John"}
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(user)
+    }, 2000)
+  })
+}
+
+button.addEventListener("click", async () => {
+  console.log("clicked!")
+  const result = await getUserFromStore()
+  console.log(result.title)
+  console.log("clicked end!")
+});
+
+````
+
+**Output :**
+````
+>"clicked!"
+>"John"
+>"clicked end!"
+````
+
+**Javascript :**
+````
+button.addEventListener("click", async () => {
+  console.log("clicked!")
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos/1")
+  const json = await response.json()
+  console.log(json.title)
+  console.log("clicked end!")
+});
+
+````
+
+**Output :**
+````
+>"clicked!"
+>"delectus aut autem"
+>"clicked end!"
+````
+
+### Promise All ve Promise Any
+
+Promise All : İçine verilen bütün asenkron operationlar bittiğinde çalışır sadece. Loading ekranı için işe yarar.
+
+Promise Any : İçindekilerden sadece bir tanesinin bitmesini bekler.
+
+
+
