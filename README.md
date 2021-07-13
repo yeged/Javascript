@@ -217,7 +217,7 @@ Keeping the state immutable can help you in terms of performance, predictivity a
 
 WIth immutable entities, you can see the changes that happen to these objects as a chain of events. This is because the variables have new references which are easier to track compared to existing variables. 
 
-Immutable tipler, mutable tiplerden daha performanslıdır. Yani daha hızlı çalışırlar. Çünkü önceki değer ile ilgili bir kontrol yapmaz ve veriyi direk ram’de bulduğu boş alana yazar. Performans kaygınız olduğunda bu tür durumları dikkate alarak uygulamanızda iyileştirmeler yapabilirsiniz
+Immutable tipler, mutable tiplerden daha performanslıdır. Çünkü değişkenlerin mevcut değişkenlere kıyasla izlemesi daha kolay yeni referanslara sahiptir.
 
 **Mutable**
 
@@ -257,6 +257,8 @@ document.getElementById("submit").addEventListener("click", function(event){
 * ###  Bubble Capture Phase Stop Propagation
 
 https://codepen.io/yeged/pen/BaRLOWj
+
+https://domevents.dev/
 
 **HTML :**
 ````
@@ -464,9 +466,13 @@ button.addEventListener("click", () => {
 
 * ### Promise
 
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
 Promisler birer objectdir. Pending -> Fullfill or Reject -> then -> return. 
 
 **Fetch**
+
+The Fetch API provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses. It also provides a global fetch() method that provides an easy, logical way to fetch resources asynchronously across the network.
 
 Fetch promise döndürür. Fetchden gelen bir promise result(Promise) döndürür.(Fullfill olduğunda response) Result json metodu döndürür ve başka bir promise döner. Zincirleme(Chain)
 
@@ -535,6 +541,8 @@ button.addEventListener("click", () => {
 
 * ### Async and Await
 
+First of all we have the async keyword, which you put in front of a function declaration to turn it into an async function. An async function is a function that knows how to expect the possibility of the await keyword being used to invoke asynchronous code
+
 Async keywordü herhangi bir fonksiyonu promise hale dönüştürmek için kullanılır. Promisler async operationslardır, asenkron çalışırlar. 
 
 Await sırayla çalışır ve çalışana kadar bekletir. Bir sürü data çekerken loading işlemi gerçekleştirmek için kullanılabilir.
@@ -594,7 +602,21 @@ button.addEventListener("click", async () => {
 
 Promise All : İçine verilen bütün asenkron operationlar bittiğinde çalışır sadece. Loading ekranı için işe yarar.
 
+The Promise.all() method takes an iterable of promises as an input, and returns a single Promise that resolves to an array of the results of the input promises. This returned promise will resolve when all of the input's promises have resolved, or if the input iterable contains no promises. It rejects immediately upon any of the input promises rejecting or non-promises throwing an error, and will reject with this first rejection message / error.
+
 Promise Any : İçindekilerden sadece bir tanesinin bitmesini bekler.
+
+Promise.any() takes an iterable of Promise objects and, as soon as one of the promises in the iterable fulfills, returns a single promise that resolves with the value from that promise. If no promises in the iterable fulfill (if all of the given promises are rejected), then the returned promise is rejected with an AggregateError, a new subclass of Error that groups together individual errors. Essentially, this method is the opposite of Promise.all().
+
+# Sources
+
+https://www.patika.dev/
+
+https://developer.mozilla.org/
+
+https://www.geeksforgeeks.org/event-bubbling-in-javascript/
+
+*Berkay Aydın (2021) Innovance React Bootcamp*
 
 
 
