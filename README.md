@@ -56,6 +56,9 @@ String + String = String
 * null == undefined //true
 * null === undefined //false
 ````
+
+:arrow_up:[back to top](#table-of-contents)
+
 ## 2-) Scope Closures
 
 * ###  Scope
@@ -65,7 +68,7 @@ String + String = String
 |`var x; `|`let x;`|
 |`function test(){}`|`const x = function(){}`|
 
-### Function Scope
+* ### Function Scope
 
 **var :**
 ````
@@ -109,7 +112,9 @@ sayHello()
 ````
 > "Hello"
 ````
-### Block Scope
+:arrow_up:[back to top](#table-of-contents)
+
+* ### Block Scope
 
 **let :**
 ````
@@ -147,6 +152,8 @@ const sayHello = function(){
 ````
 Error: Cannot access 'sayHello' before initialization
 ````
+
+:arrow_up:[back to top](#table-of-contents)
 
 * ###  Undef vs Undec
 
@@ -200,6 +207,8 @@ name("Doe")
 > "Jane" "Doe"
 ````
 
+:arrow_up:[back to top](#table-of-contents)
+
 * ###  Immutable vs Mutable
 
 Immutable.js
@@ -228,6 +237,7 @@ a = "Joe" // Memory 125 , Jane still in memory 123.
 console.log(a) // Joe
 console.log(b) // Jane
 ````
+:arrow_up:[back to top](#table-of-contents)
 
 ## 3-) Events, Async-Operations
 
@@ -242,6 +252,7 @@ document.getElementById("submit").addEventListener("click", function(event){
   event.preventDefault()
 });
 ````
+:arrow_up:[back to top](#table-of-contents)
 
 * ###  Bubble Capture Phase Stop Propagation
 
@@ -264,7 +275,7 @@ https://codepen.io/yeged/pen/BaRLOWj
 
 ![Ekran görüntüsü 2021-07-13 133255](https://user-images.githubusercontent.com/51911426/125437549-3bfcd39c-86af-470a-b05d-04b45521e365.png)
 
-### Bubbling
+* ### Bubbling
 
 Event bubbling is a method of event propagation in the HTML DOM API when an event is in an element inside another element, and both elements have registered a handle to that event. It is a process that starts with the element that triggered the event and then bubbles up to the containing elements in the hierarchy. In event bubbling, the event is first captured and handled by the innermost element and then propagated to outer elements
 
@@ -295,7 +306,9 @@ function clickHandle(event){
 
 ![122](https://user-images.githubusercontent.com/51911426/125438144-cf66ef6f-ce92-47bd-a961-373e621a57be.png)
 
-### Capture Phase
+:arrow_up:[back to top](#table-of-contents)
+
+* ### Capture Phase
 
 In event capturing, an event propagates from the outermost element to the target element. It is the opposite of event bubbling, where events propagate outwards from the target to the outer elements.
 
@@ -327,7 +340,9 @@ function clickHandle(event){
 
 ![123](https://user-images.githubusercontent.com/51911426/125438526-f6d01ed8-bcba-4cd8-bab3-84a428275aad.png)
 
-### Stop Propagation
+:arrow_up:[back to top](#table-of-contents)
+
+* ### Stop Propagation
 
 Event flowunu durdurur. Tetiklendiği elemandan sonra bubble olmaz.
 
@@ -390,7 +405,9 @@ function clickGrandparentHandle(event){
 
 ![12](https://user-images.githubusercontent.com/51911426/125439329-389444df-2b2b-43b0-9a6b-a119041f1b8a.png)
 
-### Stop Propagation vs Prevent Default
+:arrow_up:[back to top](#table-of-contents)
+
+* ### Stop Propagation vs Prevent Default
 
 It does not, however, prevent any default behaviors from occurring; for instance, clicks on links are still processed. If you want to stop those behaviors, see the preventDefault() method.
 
@@ -408,7 +425,9 @@ Stop Propagation Event flowun devam etmesini engeller.
 </div>
 ````
 
-### XHR - Old Way Request
+:arrow_up:[back to top](#table-of-contents)
+
+* ### XHR - Old Way Request
 
 Closure sayesinde veri alındı ve asenkron bir işlem yapılmış oldu. Callback Yöntemi.
 
@@ -441,8 +460,9 @@ button.addEventListener("click", () => {
 >"clicked end!"
 >"User info :" "delectus aut autem"
 ````
+:arrow_up:[back to top](#table-of-contents)
 
-### Promise
+* ### Promise
 
 Promisler birer objectdir. Pending -> Fullfill or Reject -> then -> return. 
 
@@ -469,6 +489,8 @@ button.addEventListener("click", () => {
 >"clicked end!"
 >"User info :" "delectus aut autem"
 ````
+
+:arrow_up:[back to top](#table-of-contents)
 
 **Vanilla Promise**
 
@@ -509,8 +531,9 @@ button.addEventListener("click", () => {
 >"clicked end!"
 >"John"
 ````
+:arrow_up:[back to top](#table-of-contents)
 
-### Async and Await
+* ### Async and Await
 
 Async keywordü herhangi bir fonksiyonu promise hale dönüştürmek için kullanılır. Promisler async operationslardır, asenkron çalışırlar. 
 
@@ -565,8 +588,9 @@ button.addEventListener("click", async () => {
 >"delectus aut autem"
 >"clicked end!"
 ````
+:arrow_up:[back to top](#table-of-contents)
 
-### Promise All ve Promise Any
+* ### Promise All ve Promise Any
 
 Promise All : İçine verilen bütün asenkron operationlar bittiğinde çalışır sadece. Loading ekranı için işe yarar.
 
