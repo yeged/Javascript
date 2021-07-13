@@ -1,15 +1,34 @@
+# Table of Contents
+
+* [Types](#primitive-types)
+  * [Coercion](#coercion)
+  * [Boolean](#boolean)
+  * [Equality](#equality)
+* [Scope Closures](#scope)
+  * [Function Scope](#function-scope)
+  * [Block Scope](#block-scope)
+  * [Undef vs Undec](#undef-vs-undec)
+  * [Closure](#closure)
+  * [Immutable vs Mutable](#immutable-vs-mutable)
+* [Events, Async-Operations](#prevent-default)
+  * [Bubble Capture Phase Stop Propagation](#bubble-capture-phase-stop-propagation)
+  * [Bubbling](#bubbling)
+  * [Capture Phase](#capture-phase)
+  * [Stop Propagation](#stop-propagation)
+  * [Async Operations](#async-operations)
+  * [Promise](#promise)
+  * [Async Await](#async-and-await)
+
 # Javascript
 
-[create an anchor](#block-scope)
-
 ## 1-) Types
-### a-) Primitive Types
+* ###  Primitive Types
 
 In JavaScript, a primitive (primitive value, primitive data type) is data that is **not an object and has no methods.** There are 7 primitive data types: string, number, bigint, boolean, undefined, symbol, and null.
 
 All primitives are ***immutable***
 
-### b-) Coercion 
+* ###  Coercion 
 ````
 Number + Number = Number
 
@@ -19,7 +38,7 @@ String + Number = String
 
 String + String = String
 ````
-### c-) Booelan
+* ###  Boolean
 
 |Truthy|Falsy|
 |--|--|
@@ -30,7 +49,7 @@ String + String = String
 |`!!"sample"`|`NaN`|
 |`function test(){}`|`undefined`|
 
-### d-) Equality
+* ###  Equality
 ````
 * 1 == "1" //true
 * 1 === "1" // false
@@ -39,7 +58,7 @@ String + String = String
 ````
 ## 2-) Scope Closures
 
-### a-) Scope
+* ###  Scope
 
 |Function Scope (Hoisting) |Block Scope|
 |--|--|
@@ -129,7 +148,7 @@ const sayHello = function(){
 Error: Cannot access 'sayHello' before initialization
 ````
 
-### b-) Undef vs Undec
+* ###  Undef vs Undec
 
 ````
 var x;
@@ -138,7 +157,7 @@ console.log(x) // undefined
 console.log(y) // undefined(undeclared)
 ````
 
-### c-) Closure
+* ###  Closure
 
 A closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
 
@@ -181,7 +200,7 @@ name("Doe")
 > "Jane" "Doe"
 ````
 
-### d-) Immutable vs Mutable
+* ###  Immutable vs Mutable
 
 Immutable.js
 
@@ -212,7 +231,7 @@ console.log(b) // Jane
 
 ## 3-) Events, Async-Operations
 
-### a-) Prevent Default
+* ###  Prevent Default
 
 The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
 
@@ -224,7 +243,7 @@ document.getElementById("submit").addEventListener("click", function(event){
 });
 ````
 
-### b-) Bubble, Capture Phase , Stop Propagation
+* ###  Bubble Capture Phase Stop Propagation
 
 https://codepen.io/yeged/pen/BaRLOWj
 
@@ -379,7 +398,7 @@ Prevent Default bir web elemanının default davranışını değiştirir. Brows
 
 Stop Propagation Event flowun devam etmesini engeller.
 
-### c-) Async Operations
+* ### Async Operations
 
 **HTML :**
 
@@ -491,7 +510,7 @@ button.addEventListener("click", () => {
 >"John"
 ````
 
-**Async and Await**
+### Async and Await
 
 Async keywordü herhangi bir fonksiyonu promise hale dönüştürmek için kullanılır. Promisler async operationslardır, asenkron çalışırlar. 
 
