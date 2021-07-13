@@ -178,3 +178,32 @@ name("Doe")
 ````
 > "Jane" "Doe"
 ````
+
+## Immutable vs Mutable
+
+Immutable.js
+
+Keeping the state immutable can help you in terms of performance, predictivity and better mutation tracking.
+
+WIth immutable entities, you can see the changes that happen to these objects as a chain of events. This is because the variables have new references which are easier to track compared to existing variables. 
+
+Immutable tipler, mutable tiplerden daha performanslıdır. Yani daha hızlı çalışırlar. Çünkü önceki değer ile ilgili bir kontrol yapmaz ve veriyi direk ram’de bulduğu boş alana yazar. Performans kaygınız olduğunda bu tür durumları dikkate alarak uygulamanızda iyileştirmeler yapabilirsiniz
+
+**Mutable**
+
+Mutable is a type of variable that can be changed. In JavaScript, only objects and arrays are mutable, not primitive values.
+````
+let a = {name: "Jane"} // Memory : 123
+let b = a // Memory : 123
+a.name = "Joe" // Memory  : 123
+console.log(a) // Joe
+console.log(b) // Joe
+````
+**Immutable**
+````
+let a = "Jane" // Memory : 123
+let b = a  // Memory 124
+a = "Joe" // Memory 125 , Jane still in memory 123.
+console.log(a) // Joe
+console.log(b) // Jane
+````
